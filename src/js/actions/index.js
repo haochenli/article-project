@@ -8,8 +8,7 @@ export const deleteArticle = articleId => ({
   id: articleId
 })
 
-// export const editArticle = (changedArticle, article) => ({
-//   type: "EDIT_ARTICLE",
-//   changedArticle: changedArticle,
-//   article: article 
-// })
+export const editArticle = (article) => ({
+  type: "EDIT_ARTICLE",
+  article: article 
+})

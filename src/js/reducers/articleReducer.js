@@ -5,9 +5,13 @@ const articleReducer = (state = [], action) => {
     case ADD_ARTICLE:
       return [...state, action.payload];
     case DELETE_ARTICLE:
-      return deleteActicle(state, action.id);
+      let resutlt = deleteActicle(state, action.id);
+      return result
     case EDIT_ARTICLE:
-     return editArticle(state, action);
+    //  let result = editArticle(state, action);
+    //  console.log('result is', result)
+     console.log('action is', action)
+     return [...state, {selectedArticle: action.article}]
     default:
       return state;
   }

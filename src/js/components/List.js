@@ -6,7 +6,6 @@ import { deleteArticle, editArticle } from "../actions/index";
 const mapStateToProps = (state, action) => {
   return { 
     articles: state.articles
-    // changedArticle: changedArticle
   };
 };
 
@@ -35,15 +34,18 @@ class ConnectedList extends Component {
   handleEdit (article, editArticle) {
     return function () {
       event.preventDefault();
-      console.log('article is', article)
       editArticle(article);
     }
   }
 
   render() {
+    let article = this.props.article || []
+    // let selectedArticle = article[article.length-1].selectedArticle
+    let data = article[article.length-1].selectedArticle ? article.splice(-1,1) : article
+    
     return (
       <ul className="list-group list-group-flush">
-      {this.props.articles.map(el => (
+      {data.map(el => (
         <li className="list-group-item" key={el.id}>
           {el.title}
           <button onClick={this.handleDelete(el,this.props.deleteArticle)} >DELETE</button>
