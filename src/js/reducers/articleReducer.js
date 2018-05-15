@@ -5,7 +5,7 @@ const articleReducer = (state = [], action) => {
     case ADD_ARTICLE:
       return [...state, action.payload];
     case DELETE_ARTICLE:
-      let resutlt = deleteActicle(state, action.id);
+      let result = deleteActicle(state, action.id);
       return result
     case EDIT_ARTICLE:
     //  let result = editArticle(state, action);

@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = (state, action) => {
-  return { articles: state.articles, action: action };
+  return { articles: state.articles};
 };
 
 class ConnectedForm extends Component {
@@ -39,7 +39,6 @@ class ConnectedForm extends Component {
   }
 
   render() {
-    // if (this.props.action)
     console.log('The props in form is', this.props)
     const { title } = this.state;
     return (

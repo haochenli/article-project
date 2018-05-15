@@ -10,6 +10,7 @@ const mapStateToProps = (state, action) => {
 };
 
 const mapDispatchToProps = dispatch => {
+  console.log('wtf is dispatch', dispatch)
   return {
     deleteArticle: articleId => dispatch(deleteArticle(articleId)),
     editArticle: article => dispatch(editArticle(article))
@@ -39,13 +40,13 @@ class ConnectedList extends Component {
   }
 
   render() {
-    let article = this.props.article || []
-    // let selectedArticle = article[article.length-1].selectedArticle
-    let data = article[article.length-1].selectedArticle ? article.splice(-1,1) : article
-    
+    console.log('The props in list', this.props.editArticle)
+    let funct1 = this.props.editArticle
+    // console.log('hit function manually------',funct1())
     return (
       <ul className="list-group list-group-flush">
-      {data.map(el => (
+      {
+        this.props.articles.map(el => (
         <li className="list-group-item" key={el.id}>
           {el.title}
           <button onClick={this.handleDelete(el,this.props.deleteArticle)} >DELETE</button>
