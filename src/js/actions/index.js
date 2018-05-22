@@ -8,7 +8,7 @@ export const deleteArticle = articleId => ({
   id: articleId
 })
 
-export const inputOnchange = text => ({
+export const inputOnchange = content => ({
   type: "INPUT_ONCHANGE",
-  content: text
+  content: content
 })

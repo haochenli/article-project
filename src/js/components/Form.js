@@ -2,16 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import uuidv1 from "uuid";
-import { addArticle } from "../actions/index";
+import { addArticle, inputOnchange } from "../actions/index";
 
 const mapDispatchToProps = dispatch => {
   return {
-    addArticle: article => dispatch(addArticle(article))
+    addArticle: article => dispatch(addArticle(article)),
+    inputOnchange: content => dispatch(inputOnchange(content))
   };
 };
 
 const mapStateToProps = (state, action) => {
-  return { articles: state.articles};
+  return {
+    articles: state.articles,
+    content: state.content
+  };
 };
 
 class ConnectedForm extends Component {
@@ -27,12 +31,12 @@ class ConnectedForm extends Component {
   }
 
   handleChange(event) {
-    this.setState({ [event.target.id]: event.target.value });
+    this.props.inputOnchange(event.target.value)
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const { title } = this.state;
+    const title = this.props.content
     const id = uuidv1();
     this.props.addArticle({ title, id });
     this.refs.input.value = ''
@@ -40,7 +44,6 @@ class ConnectedForm extends Component {
 
   render() {
     const { title } = this.state;
-    console.log('title is', title)
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -49,7 +52,7 @@ class ConnectedForm extends Component {
             type="text"
             className="form-control"
             id="title"
-            value={title}
+            value={this.props.content}
             onChange={this.handleChange}
           />
         </div>
