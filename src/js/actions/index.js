@@ -12,3 +12,8 @@ export const inputOnchange = content => ({
   type: "INPUT_ONCHANGE",
   content: content
 })
+
+export const editArticle = id => ({
+  type: "EDIT_ARTICLE",
+  id: id
+})
