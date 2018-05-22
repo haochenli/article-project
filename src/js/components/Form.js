@@ -22,10 +22,6 @@ class ConnectedForm extends Component {
   constructor() {
     super();
 
-    this.state = {
-      title: ""
-    };
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -39,11 +35,10 @@ class ConnectedForm extends Component {
     const title = this.props.content
     const id = uuidv1();
     this.props.addArticle({ title, id });
-    this.refs.input.value = ''
   }
 
   render() {
-    const { title } = this.state;
+    const title = this.props.content;
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -52,7 +47,7 @@ class ConnectedForm extends Component {
             type="text"
             className="form-control"
             id="title"
-            value={this.props.content}
+            value={title}
             onChange={this.handleChange}
           />
         </div>

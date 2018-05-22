@@ -1,19 +1,19 @@
 import { ADD_ARTICLE, DELETE_ARTICLE, EDIT_ARTICLE } from "../constants/action-types";
 
-const articleReducer = (state = [], action) => {
+const articleReducer = (articles = [], action) => {
   switch (action.type) {
     case ADD_ARTICLE:
-      return [...state, action.payload];
+      return [...articles, action.payload];
     case DELETE_ARTICLE:
-      let result = deleteActicle(state, action.id);
+      let result = deleteActicle(articles, action.id);
       return result
     default:
-      return state;
+      return articles;
   }
 };
 
-function deleteActicle (state, id) {
-  return state.filter(item => item.id !== id)
+function deleteActicle (articles, id) {
+  return articles.filter(item => item.id !== id)
 };
 
 
