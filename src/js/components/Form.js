@@ -38,7 +38,6 @@ class ConnectedForm extends Component {
   }
 
   render() {
-    console.log('test')
     const title = this.props.content;
     return (
       <form onSubmit={this.handleSubmit}>
