@@ -39,7 +39,6 @@ class ConnectedForm extends Component {
   }
 
   render() {
-    console.log('The props in form is', this.props)
     const { title } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>

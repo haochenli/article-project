@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { deleteArticle, editArticle } from "../actions/index";
+import { deleteArticle } from "../actions/index";
 
 const mapStateToProps = (state, action) => {
   return { 
@@ -10,10 +10,8 @@ const mapStateToProps = (state, action) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  console.log('wtf is dispatch', dispatch)
   return {
-    deleteArticle: articleId => dispatch(deleteArticle(articleId)),
-    editArticle: article => dispatch(editArticle(article))
+    deleteArticle: articleId => dispatch(deleteArticle(articleId))
   }
 }
 
@@ -21,7 +19,6 @@ class ConnectedList extends Component {
   constructor(props) {
     super()
     this.handleDelete = this.handleDelete.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
   }
  
   handleDelete (article, deleteArticle) {
@@ -32,17 +29,8 @@ class ConnectedList extends Component {
     }
   }
 
-  handleEdit (article, editArticle) {
-    return function () {
-      event.preventDefault();
-      editArticle(article);
-    }
-  }
 
   render() {
-    console.log('The props in list', this.props.editArticle)
-    let funct1 = this.props.editArticle
-    // console.log('hit function manually------',funct1())
     return (
       <ul className="list-group list-group-flush">
       {
@@ -50,7 +38,6 @@ class ConnectedList extends Component {
         <li className="list-group-item" key={el.id}>
           {el.title}
           <button onClick={this.handleDelete(el,this.props.deleteArticle)} >DELETE</button>
-          <button onClick={this.handleEdit(el,this.props.editArticle)} >EDIT</button>
         </li>
       ))}
     </ul>
