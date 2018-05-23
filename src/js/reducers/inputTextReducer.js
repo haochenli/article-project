@@ -1,9 +1,12 @@
-import { INPUT_ONCHANGE } from "../constants/action-types";
+import { INPUT_ONCHANGE, EDIT_ARTICLE } from "../constants/action-types";
 
 const inputTextReducer = (content = '', action) => {
+  console.log('action is', action)
   switch(action.type) {
     case INPUT_ONCHANGE:
       return action.content
+    case EDIT_ARTICLE:
+      return action.article.title
     default:
       return ''
   }

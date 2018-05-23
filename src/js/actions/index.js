@@ -13,7 +13,7 @@ export const inputOnchange = content => ({
   content: content
 })
 
-export const editArticle = id => ({
+export const editArticle = article => ({
   type: "EDIT_ARTICLE",
-  id: id
+  article: article
 })
