@@ -19,18 +19,11 @@ const mapStateToProps = (state, action) => {
 };
 
 class ConnectedForm extends Component {
-  constructor() {
-    super();
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
+  handleChange = event => {
     this.props.inputOnchange(event.target.value)
   }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     const title = this.props.content
     const id = uuidv1();
