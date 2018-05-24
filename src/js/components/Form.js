@@ -11,14 +11,20 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const mapStateToProps = (state, action) => {
+const mapStateToProps = state => {
   return {
     articles: state.articles,
-    content: state.content
+    content: state.content,
+    action: state.action
   };
 };
 
 class ConnectedForm extends Component {
+  constructor(props) {
+    super(props)
+    this.edit = false
+  }
+
   handleChange = event => {
     this.props.inputOnchange(event.target.value)
   }
@@ -32,6 +38,11 @@ class ConnectedForm extends Component {
 
   render() {
     const title = this.props.content;
+    if(this.props.action.type === 'EDIT_ARTICLE') {
+      this.isEdit = true
+    } else if (this.props.action.type === 'ADD_ARTICLE') {
+      this.isEdit = false
+    }
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -45,7 +56,7 @@ class ConnectedForm extends Component {
           />
         </div>
         <button type="submit" className="btn btn-success btn-lg">
-          SAVE
+          {this.isEdit ? 'UPLOAD' : 'SAVE'}
         </button>
       </form>
     );

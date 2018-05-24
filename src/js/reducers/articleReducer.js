@@ -7,9 +7,7 @@ const articleReducer = (articles = [], action) => {
     case DELETE_ARTICLE:
       return deleteActicle(articles, action.id);
     case EDIT_ARTICLE:
-    console.log(action)
      let result = deleteActicle(articles, action.article.id);
-     console.log(result)
      return result
     default:
       return articles;

@@ -28,7 +28,6 @@ class ConnectedList extends Component {
 
   handleEdit = (article, editArticle) => {
     return function () {
-      console.log('article', article)
       editArticle(article)
     }
   }
