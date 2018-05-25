@@ -6,5 +6,5 @@ import actionInfoReducer from "./actionInfoReducer"
 export default combineReducers({ 
   articles: articleReducer, 
   content: inputTextReducer,
-  action: actionInfoReducer
+  mode: actionInfoReducer
 });

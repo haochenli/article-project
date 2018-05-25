@@ -3,11 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { deleteArticle, editArticle } from "../actions/index";
 
-const mapStateToProps = (state, action) => {
-  return { 
-    articles: state.articles
-  };
-};
+const mapStateToProps = ({articles}) => ({
+  articles
+});
 
 const mapDispatchToProps = dispatch => {
   return {

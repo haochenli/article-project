@@ -1,29 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
 import PropTypes from "prop-types";
 import uuidv1 from "uuid";
 import { addArticle, inputOnchange } from "../actions/index";
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addArticle: article => dispatch(addArticle(article)),
-    inputOnchange: content => dispatch(inputOnchange(content))
-  };
-};
+const mapDispatchToProps = dispatch => bindActionCreators({
+    addArticle,
+    inputOnchange
+}, dispatch);
 
-const mapStateToProps = state => {
-  return {
-    articles: state.articles,
-    content: state.content,
-    action: state.action
-  };
-};
+const mapStateToProps = ({ articles, content, mode }) => ({
+  articles,
+  content,
+  mode
+})
 
 class ConnectedForm extends Component {
-  constructor(props) {
-    super(props)
-    this.edit = false
-  }
+  // constructor(props) {
+  //   super(props)
+  //   // this.edit = false
+  // }
 
   handleChange = event => {
     this.props.inputOnchange(event.target.value)
@@ -37,12 +34,12 @@ class ConnectedForm extends Component {
   }
 
   render() {
-    const title = this.props.content;
-    if(this.props.action.type === 'EDIT_ARTICLE') {
-      this.isEdit = true
-    } else if (this.props.action.type === 'ADD_ARTICLE') {
-      this.isEdit = false
-    }
+    const { content, mode } = this.props;
+    // if(mode === 'EDIT_ARTICLE') {
+    //   this.isEdit = true
+    // } else if (mode === 'ADD_ARTICLE') {
+    //   this.isEdit = false
+    // }
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -51,12 +48,12 @@ class ConnectedForm extends Component {
             type="text"
             className="form-control"
             id="title"
-            value={title}
+            value={content}
             onChange={this.handleChange}
           />
         </div>
         <button type="submit" className="btn btn-success btn-lg">
-          {this.isEdit ? 'UPLOAD' : 'SAVE'}
+          {mode.types === 'EDIT_ARTICLE' ? 'UPLOAD' : 'SAVE'}
         </button>
       </form>
     );

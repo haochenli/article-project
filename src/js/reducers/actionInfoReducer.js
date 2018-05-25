@@ -1,12 +1,12 @@
-import { EDIT_ARTICLE } from "../constants/action-types";
+import { EDIT_ARTICLE, ADD_ARTICLE } from "../constants/action-types";
 
-const actionInfoReducer = (actionType='', action) => {
-  console.log('In reducer', action)
+const actionInfoReducer = (mode = ADD_ARTICLE, action) => {
   switch (action.type) {
     case EDIT_ARTICLE:
-      return action
-    default:
-      return action;
+      return EDIT_ARTICLE;
+    case ADD_ARTICLE:
+      return ADD_ARTICLE;
+    default: return mode
   }
 };
 
