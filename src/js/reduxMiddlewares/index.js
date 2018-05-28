@@ -2,7 +2,7 @@ import { applyMiddleware, redux } from 'redux'
 import loggerMiddleware from 'redux-logger'
 
 const appMiddlewares = [
-  loggerMiddleware
+  // loggerMiddleware
 ]
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

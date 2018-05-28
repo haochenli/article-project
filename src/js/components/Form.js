@@ -3,21 +3,23 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import PropTypes from "prop-types";
 import uuidv1 from "uuid";
-import { addArticle, inputOnchange } from "../actions/index";
+import { addArticle, inputOnchange, updateArticle } from "../actions/index";
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     addArticle,
-    inputOnchange
+    inputOnchange,
+    updateArticle
 }, dispatch);
 //   return {
 //   addArticle: article => dispatch(addArticle(article)),
 //   inputOnchange: content => dispatch(inputOnchange(content))
 // };
 // };
-const mapStateToProps = ({ articles, content, mode }) => ({
+const mapStateToProps = ({ articles, content, mode, selectedArticle }) => ({
   articles,
   content,
-  mode
+  mode,
+  selectedArticle
 })
 
 class ConnectedForm extends Component {
@@ -25,17 +27,26 @@ class ConnectedForm extends Component {
     this.props.inputOnchange(event.target.value)
   }
 
-  handleSubmit = event => {
+  addArticle = event => {
     event.preventDefault();
     const title = this.props.content
     const id = uuidv1();
     this.props.addArticle({ title, id });
   }
 
+  updateArticle = event => {
+    event.preventDefault();
+    const newArticle = {
+      id: this.props.selectedArticle.id,
+      title: this.props.content
+    }
+    this.props.updateArticle(newArticle)
+  }
+
   render() {
     const { content, mode } = this.props;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={mode === 'EDIT_ARTICLE' ? this.updateArticle : this.addArticle}>
         <div className="form-group">
           <label htmlFor="title">Title</label>
           <input ref='input'

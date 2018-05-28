@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { bindActionCreators } from 'redux';
-import { deleteArticle, editArticle, updateArticle } from "../actions/index";
+import { deleteArticle, editArticle } from "../actions/index";
 
 const mapStateToProps = ({articles}) => ({
   articles
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    deleteArticle: articleId => dispatch(deleteArticle(articleId)),
-    editArticle: article => dispatch(editArticle(article))
-  }
-}
-// const mapDispatchToProps = dispatch => bindActionCreators ({
-//   deleteArticle,
-  
-// })
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     deleteArticle: articleId => dispatch(deleteArticle(articleId)),
+//     editArticle: article => dispatch(editArticle(article))
+//   }
+// }
+const mapDispatchToProps = dispatch => bindActionCreators ({
+  deleteArticle,
+  editArticle
+}, dispatch);
 
 class ConnectedList extends Component {
  

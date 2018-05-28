@@ -21,9 +21,9 @@ export const inputOnchange = content => ({
   content: content
 })
 
-export const updateArticle = article => ({
+export const updateArticle = newArticle => ({
   type: UPDATE_ARTICLE,
-  article: article
+  newArticle: newArticle
 })
 
 export const editArticle = article => ({
