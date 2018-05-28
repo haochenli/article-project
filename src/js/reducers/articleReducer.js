@@ -6,13 +6,11 @@ const articleReducer = (articles = [], action) => {
       return [...articles, action.payload];
     case DELETE_ARTICLE:
       return deleteActicle(articles, action.id);
-    case EDIT_ARTICLE:
-     let result = deleteActicle(articles, action.article.id);
-     return result
     default:
       return articles;
   }
 };
+
 
 function deleteActicle (articles, id) {
   return articles.filter(item => item.id !== id)

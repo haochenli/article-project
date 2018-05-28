@@ -9,7 +9,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     addArticle,
     inputOnchange
 }, dispatch);
-
+//   return {
+//   addArticle: article => dispatch(addArticle(article)),
+//   inputOnchange: content => dispatch(inputOnchange(content))
+// };
+// };
 const mapStateToProps = ({ articles, content, mode }) => ({
   articles,
   content,
@@ -17,11 +21,6 @@ const mapStateToProps = ({ articles, content, mode }) => ({
 })
 
 class ConnectedForm extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   // this.edit = false
-  // }
-
   handleChange = event => {
     this.props.inputOnchange(event.target.value)
   }
@@ -35,11 +34,6 @@ class ConnectedForm extends Component {
 
   render() {
     const { content, mode } = this.props;
-    // if(mode === 'EDIT_ARTICLE') {
-    //   this.isEdit = true
-    // } else if (mode === 'ADD_ARTICLE') {
-    //   this.isEdit = false
-    // }
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -53,7 +47,7 @@ class ConnectedForm extends Component {
           />
         </div>
         <button type="submit" className="btn btn-success btn-lg">
-          {mode.types === 'EDIT_ARTICLE' ? 'UPLOAD' : 'SAVE'}
+          {mode === 'EDIT_ARTICLE' ? 'UPLOAD' : 'SAVE'}
         </button>
       </form>
     );

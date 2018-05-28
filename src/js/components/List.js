@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { deleteArticle, editArticle } from "../actions/index";
+import { bindActionCreators } from 'redux';
+import { deleteArticle, editArticle, updateArticle } from "../actions/index";
 
 const mapStateToProps = ({articles}) => ({
   articles
@@ -13,6 +14,10 @@ const mapDispatchToProps = dispatch => {
     editArticle: article => dispatch(editArticle(article))
   }
 }
+// const mapDispatchToProps = dispatch => bindActionCreators ({
+//   deleteArticle,
+  
+// })
 
 class ConnectedList extends Component {
  

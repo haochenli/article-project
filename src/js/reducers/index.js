@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import articleReducer from "./articleReducer";
 import inputTextReducer from "./inputTextReducer";
-import actionInfoReducer from "./actionInfoReducer"
+import modeReducer from "./modeReducer"
 
 export default combineReducers({ 
   articles: articleReducer, 
   content: inputTextReducer,
-  mode: actionInfoReducer
+  mode: modeReducer
 });

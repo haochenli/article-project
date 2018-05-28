@@ -2,7 +2,8 @@ import {
   ADD_ARTICLE,
   DELETE_ARTICLE,
   INPUT_ONCHANGE,
-  EDIT_ARTICLE,
+  UPDATE_ARTICLE,
+  EDIT_ARTICLE
 } from '../constants/action-types'
 
 export const addArticle = article => ({
@@ -18,6 +19,11 @@ export const deleteArticle = articleId => ({
 export const inputOnchange = content => ({
   type: INPUT_ONCHANGE,
   content: content
+})
+
+export const updateArticle = article => ({
+  type: UPDATE_ARTICLE,
+  article: article
 })
 
 export const editArticle = article => ({
