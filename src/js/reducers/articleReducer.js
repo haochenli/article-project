@@ -22,7 +22,6 @@ function updateArticle (articles, newArticle) {
 }
 
 function deleteActicle (articles, id) {
-  debugger
   return articles.filter(item => item.id !== id)
 };
 
